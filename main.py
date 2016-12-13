@@ -24,9 +24,35 @@ class SeriesDownloader():
 		getLinks = getlinks.GetLinks(self.DIRECTORYURL) # create object
 		getLinks.feed(pageHTML)
 		linksList = getLinks.getDownLinks()
+		filteredList = self.filterEp(linksList)
 
+		for i in range(len(filteredList)):
+			print filteredList[i] + "\n"
+
+	# filter list, we only want to get episode that match our Quality and encoder
+	def filterEp(self, linksList):
+		# create list
+		filteredList = []
+		# iterate through the list
 		for i in range(len(linksList)):
-			print linksList[i] + "\n"
+			links = linksList[i]
+
+			# check if filter x265 encoder is set to True
+			if self.X265ENCODER == True:
+				# check if quality and encoder is in the links, add to the list
+				if self.QUALITY in links and "x265" in links:
+					filteredList.append(links)
+			else: 
+				# if encoder False, only check quality
+				if self.QUALITY in links:
+					filteredList.append(links)
+
+		return filteredList # return the list
+
+
+
+
+
 
 if __name__ == '__main__':
 	SeriesDownloader().run()
