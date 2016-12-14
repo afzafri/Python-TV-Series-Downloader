@@ -1,10 +1,12 @@
-# script by 'Triptych' at stackoverflow: http://stackoverflow.com/a/2030027
-# I modified it into a class, and add write to file, to download the file
+# script by to fetch file from the links, and download it
 import urllib2, sys 
 
 class downloadFile():
 
-   def startDownload(self,url):
+   def __init__(self, savedir):
+      self.savedir = savedir
+
+   def startDownload(self,url,):
       self.filename = url.replace('%20','_').split('/')[-1] # get filename, get last one after split
       self.response = urllib2.urlopen(url); # open file
       print "\nDownloading " + self.filename # alert user what file is currently downloading
@@ -32,7 +34,7 @@ class downloadFile():
       total_size = self.response.info().getheader('Content-Length').strip() 
       total_size = int(total_size)
       bytes_so_far = 0
-      savefile = open(self.filename,'wb') # create output file
+      savefile = open(self.savedir + self.filename,'wb') # create output file
 
       while 1:
          chunk = self.response.read(chunk_size) # read the response in chunks
@@ -47,10 +49,3 @@ class downloadFile():
 
       return bytes_so_far # return total of bytes for the progress usage
       savefile.close() # close the file
-
-# usage
-"""
-url = "" # direct file links
-obj = downloadFile() # initialize object
-obj.startDownload(url) # call class method, pass in the url
-"""
