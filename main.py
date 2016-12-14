@@ -64,7 +64,7 @@ class SeriesDownloader():
 		# check if no new episode, display message
 		# if new episode available, download it
 		if not newEpisodeList:
-			print "\n No new episode available to be downloaded. Please run this program again later.\n"
+			print "\nNo new episode available to be downloaded. Please run this program again later.\n"
 		else:
 			downobj = download.downloadFile(self.SAVEDIRECTORY) # initialize object, pass in the save directory
 			for x in range(len(newEpisodeList)):
@@ -72,7 +72,7 @@ class SeriesDownloader():
 
 			# when finished, write the new list of episode (old ep + new ep) into the episode file
 			fileOPobj.writeListToFile(self.EPISODES_LIST,(episodesList + newEpisodeList))
-			print "\n All new episodes have been downloaded. Enjoy \n"
+			print "\nAll new episodes have been downloaded. Enjoy \n"
 
 if __name__ == '__main__':
 	SeriesDownloader().run()
