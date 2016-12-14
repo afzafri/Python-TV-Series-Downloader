@@ -28,7 +28,6 @@ class filesOP():
 		# open file. 'w' is open for writing
 		with open(filepath, 'w') as file:
 			file.write(data)
-		file.close() # close file
 
 	# write content from list to file
 	def writeListToFile(self, filepath, datalist):
@@ -36,7 +35,6 @@ class filesOP():
 		with open(filepath, 'w') as file:
 			for link in datalist:
 				file.write(link + '\n') # write to file, append \n to end of line, for new line
-		file.close() # close file
 
 	# read content from file into list
 	def readListFromFile(self, filepath):
@@ -46,8 +44,7 @@ class filesOP():
 		with open(filepath, 'rt') as file:
 			for line in file:
 				output.append(line.replace('\n','')) # replace \n in the text file with nothing. We only want the link in the list
-
-		file.close() # close file
+		# return the list
 		return output
 
 
