@@ -33,9 +33,9 @@ class SeriesDownloader():
 		episodesList = fileOPobj.readListFromFile(self.EPISODES_LIST)
 
 		# for fetching the webpage HTML
-		print "\n---------------------------------------"
-		print "\nFetching episodes...please wait\n"
-		print "---------------------------------------\n"
+		print "\n--------------------------------------------------"
+		print "\nFetching episodes for "+ self.SERIES + " " + self.SEASON + "...please wait\n"
+		print "----------------------------------------------------\n"
 		getHTML = fetchwebpage.FetchWeb(self.DIRECTORYURL) # create object
 		pageHTML = getHTML.run()
 
@@ -43,7 +43,6 @@ class SeriesDownloader():
 		getLinks = getlinks.GetLinks(self.DIRECTORYURL, self.QUALITY, self.X265ENCODER) # create object
 		getLinks.feed(pageHTML)
 		linksList = getLinks.getFilteredDownLinks() # receive episode links, store into a list
-
 		newEpisodeList = [] # new list for adding new episode that not available in episodes file
 		newEp = 0 # var to store number of new episode
 
@@ -73,6 +72,6 @@ class SeriesDownloader():
 			# when finished, write the new list of episode (old ep + new ep) into the episode file
 			fileOPobj.writeListToFile(self.EPISODES_LIST,(episodesList + newEpisodeList))
 			print "\nAll new episodes have been downloaded. Enjoy \n"
-
+		
 if __name__ == '__main__':
 	SeriesDownloader().run()
