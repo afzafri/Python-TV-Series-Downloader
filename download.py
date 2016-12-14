@@ -18,8 +18,9 @@ class downloadFile():
    def chunk_report(self, bytes_so_far, chunk_size, total_size):
       percent = float(bytes_so_far) / total_size
       percent = round(percent*100, 2)
-      sys.stdout.write("Downloaded %d of %d bytes (%0.2f%%)\r" % 
-          (bytes_so_far, total_size, percent))
+      # convert bytes to megabytes and display
+      sys.stdout.write("Downloaded %.2f MB of %.2f MB (%0.2f%%)\r" % 
+          ((bytes_so_far * (10 ** -6)), (total_size * (10 ** -6)), percent))
 
       # if total bytes read is equal to total file size, download complete
       if bytes_so_far >= total_size:
