@@ -6,7 +6,7 @@ import os
 class SeriesDownloader():
 
 	# the show details, class var
-	URL = "http://dl.uplodin.ir/Serial/" # website url, only index directory (no webpage) supported
+	URL = "" # website url, only index directory (no webpage) supported
 	SERIES = "The Flash" # show name, must be same as the show directory name
 	SEASON = "S03" # show season, also must be same as the directory name
 	QUALITY = "720p" # video quality, 1080p, 720p, 480p (refer to the file name)
