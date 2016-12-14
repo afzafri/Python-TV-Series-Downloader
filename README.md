@@ -27,5 +27,8 @@ Download this project by clicking on ```Download ZIP``` under the ```Clone or do
   - ```python main.py```
 - Sit back, and let the script do the job for you
 
+# Screenshot
+![alt tag](https://raw.githubusercontent.com/afzafri/Python-TV-Series-Downloader/master/screenshot.PNG)
+
 # License
 This library is under MIT license, please look at the `LICENSE` file
